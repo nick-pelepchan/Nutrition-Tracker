@@ -1,5 +1,5 @@
 # --- Static build ---
-FROM node:22-bullseye as static-build
+FROM node:22-bullseye AS static-build
 WORKDIR /app
 
 COPY package.json package-lock.json webpack.config.js /app/
@@ -9,7 +9,7 @@ COPY src/nutrition_tracker/assets /app/src/nutrition_tracker/assets
 RUN npm run build
 
 # --- Venv build ---
-FROM python:3.11-bullseye as venv-build
+FROM python:3.11-bullseye AS venv-build
 WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE 1
